@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
-import AuthenticationService from '../service/AuthenticationService'
 import { withRouter } from 'react-router-dom';
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
+import { isUserLoggedIn, logout } from './../service/AuthenticationService'
 
 class MenuComponent extends Component {
 	render() {
-		const isUserLoggedIn = AuthenticationService.isUserLoggedIn();
+
 		return (
 			<header>
-				<Navbar bg="dark" variant="dark">
+				<Navbar className="navbar navbar-expand-lg navbar-light bg-light shadow-sm mb-4">
+					<span className="navbar-brand mb-0 h1">HRM21</span>
 					<Nav className="mr-auto">
 						<Nav.Link href="/">Home</Nav.Link>
 						<Nav.Link href="/quick-access">Quick Access</Nav.Link>
@@ -17,7 +18,7 @@ class MenuComponent extends Component {
 					</Nav>
 					<Nav >
 						{!isUserLoggedIn && <Nav.Link className="nav-link" href="/login">Login</Nav.Link>}
-						{isUserLoggedIn && <Nav.Link className="nav-link" href="/logout">Logout</Nav.Link>}
+						{isUserLoggedIn && <Nav.Link className="nav-link" onClick={logout()} href="/logout">Logout</Nav.Link>}
 					</Nav>
 				</Navbar>
 			</header>
