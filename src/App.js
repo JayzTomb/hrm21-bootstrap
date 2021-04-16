@@ -10,6 +10,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import MenuCardsComponent from './component/MenuCardsComponent'
 import ListEmployeeFunction from './component/ListEmployeeFunction'
+import CreateEmployee from './component/CreateEmployee'
 import { isUserLoggedIn } from './service/AuthenticationService'
 
 function App() {
@@ -21,13 +22,15 @@ function App() {
           <MenuComponent />
           <Container>
             <Row>
-              <Col sm={3}>
+              <Col  sm={2.9}>
                 <LeftPaneComponent />
               </Col>
               <Col sm={8}>
                 <Switch>
 
+                  <Route path="/" exact component={LoginComponent} />
                   < Route path="/login" exact component={LoginComponent} />
+
                   {isUserLoggedIn &&
                     <Route path="/logout" exact component={LoginComponent} />
                   }
@@ -37,8 +40,9 @@ function App() {
                   {isUserLoggedIn &&
                     <Route path="/employees" exact component={ListEmployeeFunction} />
                   }
-                  <Route path="/" exact component={LoginComponent} />
-
+                  {isUserLoggedIn &&
+                    <Route path="/createEmployee" exact component={CreateEmployee} />
+                  }
 
                 </Switch>
               </Col>

@@ -4,7 +4,7 @@ import { ListGroup } from 'react-bootstrap'
 const LeftPaneComponent = () => {
 
 	const adminFunc = () => {
-		console.log('admin Func')
+
 	}
 
 	return (
